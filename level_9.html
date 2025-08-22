@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 9</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 9</h1>
+  <p>Qual número vem a seguir na sequência: 2, 4, 8, 16, ?</p>
+
+  <input type="text" id="answer" placeholder="Digite aqui">
+  <button onclick="check()">OK</button>
+  <div id="gameMessage"></div>
+
+  <script>
+    function check(){
+      const val = document.getElementById("answer").value.trim();
+      if(val==="32") next();
+      else showMessage("❌ Errado! Pense melhor...");
+    }
+
+    function next(){ showMessage("✅ Certo!"); setTimeout(()=> completeLevel(9),1000);}
+    function showMessage(msg){ document.getElementById("gameMessage").textContent = msg; }
+  </script>
+</body>
+</html>

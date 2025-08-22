@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 1</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 1</h1>
+  <p>Clique no botão "Próximo" ... se conseguir 😏</p>
+
+  <button id="trap">Próximo</button>
+
+  <script>
+    const trap = document.getElementById("trap");
+    trap.addEventListener("mouseover", () => {
+      trap.style.position = "absolute";
+      trap.style.left = Math.random() * 80 + "%";
+      trap.style.top = Math.random() * 80 + "%";
+    });
+    trap.addEventListener("click", () => completeLevel(1));
+  </script>
+</body>
+</html>

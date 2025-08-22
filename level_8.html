@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 8</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 8</h1>
+  <p>Arraste o quadrado vermelho até o círculo verde! 🔴➡️🟢</p>
+
+  <div style="position:relative; width:80%; height:400px; margin:50px auto; border:2px solid #888; border-radius:15px;">
+    <div id="redBox" style="width:50px; height:50px; background:red; position:absolute; top:10px; left:10px; cursor:grab; z-index:10;"></div>
+    <div id="yellowCircle" style="width:60px; height:60px; background:yellow; border-radius:50%; position:absolute; bottom:10px; right:10px; z-index:5;"></div>
+    <div id="hiddenGreen" style="width:5px; height:5px; background:green; border-radius:50%; position:absolute; top:0; right:0; z-index:5;"></div>
+  </div>
+
+  <div id="gameMessage" style="text-align:center; margin-top:20px;"></div>
+
+  <script>
+    const redBox = document.getElementById("redBox");
+    const yellowCircle = document.getElementById("yellowCircle");
+    const hiddenGreen = document.getElementById("hiddenGreen");
+    let offsetX, offsetY, dragging=false;
+
+    function isColliding(a, b) {
+      const rectA = a.getBoundingClientRect();
+      const rectB = b.getBoundingClientRect();
+      return !(rectA.right < rectB.left || rectA.left > rectB.right || rectA.bottom < rectB.top || rectA.top > rectB.bottom);
+    }
+
+    redBox.addEventListener("mousedown", e=>{
+      dragging=true;
+      offsetX = e.offsetX;
+      offsetY = e.offsetY;
+    });
+
+    document.addEventListener("mousemove", e=>{
+      if(dragging){
+        const parent = redBox.parentElement.getBoundingClientRect();
+        let x = e.clientX - parent.left - offsetX;
+        let y = e.clientY - parent.top - offsetY;
+        x = Math.max(0, Math.min(parent.width - redBox.offsetWidth, x));
+        y = Math.max(0, Math.min(parent.height - redBox.offsetHeight, y));
+        redBox.style.left = x+"px";
+        redBox.style.top = y+"px";
+
+        if(isColliding(redBox, yellowCircle)){
+          showMessage("❌ Você caiu no círculo falso! Voltando pro Level 1...");
+          dragging=false;
+          setTimeout(()=> window.location.href="level_1.html", 1500);
+        }
+
+        if(isColliding(redBox, hiddenGreen)){
+          showMessage("✅ Você encontrou o verdadeiro alvo!");
+          dragging=false;
+          setTimeout(()=> completeLevel(8), 1000);
+        }
+      }
+    });
+
+    document.addEventListener("mouseup", ()=> dragging=false);
+
+    function showMessage(msg){
+      document.getElementById("gameMessage").textContent = msg;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 11</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 11</h1>
+  <p>Clique no botão piscante antes que ele pare! ✨</p>
+
+  <div style="text-align:center; margin-top:50px;">
+    <button id="blinkBtn" style="padding:15px 25px; font-size:16px; cursor:pointer;">Clique em mim!</button>
+  </div>
+
+  <div id="gameMessage" style="text-align:center; margin-top:20px;"></div>
+
+  <script>
+    const btn = document.getElementById("blinkBtn");
+
+    // Piscar o botão
+    setInterval(() => {
+      if(btn.style.visibility === "hidden") btn.style.visibility = "visible";
+      else btn.style.visibility = "hidden";
+    }, 500);
+
+    btn.addEventListener("click", () => {
+      showMessage("✅ Você clicou no botão piscante!");
+      setTimeout(()=> completeLevel(11), 1000);
+    });
+
+    function showMessage(msg){
+      document.getElementById("gameMessage").textContent = msg;
+    }
+  </script>
+</body>
+</html>

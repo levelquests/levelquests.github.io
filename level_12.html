@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 12</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 12</h1>
+  <p>Espere o botão aparecer... ou você vai clicar errado! ⏳</p>
+
+  <div id="container" style="text-align:center; margin-top:50px;"></div>
+  <div id="gameMessage"></div>
+
+  <script>
+    const container = document.getElementById("container");
+    const btn = document.createElement("button");
+    btn.textContent = "Clique agora!";
+    btn.style.display = "none";
+    container.appendChild(btn);
+
+    setTimeout(() => {
+      btn.style.display = "inline-block";
+    }, Math.random()*3000 + 1000); // aparece entre 1s e 4s
+
+    btn.addEventListener("click", () => {
+      showMessage("✅ Você conseguiu clicar no momento certo!");
+      setTimeout(()=> completeLevel(12),1000);
+    });
+
+    document.addEventListener("click", e => {
+      if(e.target !== btn) showMessage("❌ Clicou cedo! Reinicie.");
+    });
+
+    function showMessage(msg){ document.getElementById("gameMessage").textContent = msg; }
+  </script>
+</body>
+</html>

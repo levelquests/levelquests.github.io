@@ -1,0 +1,126 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  background: linear-gradient(135deg, #1a0e2f, #0f0a18);
+  color: #e0d6ff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Títulos */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #caa6ff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #e0d6ff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Botões modernos */
+button {
+  padding: 12px 28px;
+  margin: 10px;
+  border: 3px solid #2c1e33; /* borda roxa-azulada-escura-preta */
+  border-radius: 12px;
+  background: linear-gradient(145deg, #3c2b5c, #2c1e33);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+button:hover:enabled {
+  background: linear-gradient(145deg, #593c88, #3c2b5c);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+button:disabled {
+  background: #2c1e33;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Inputs */
+input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #2c1e33;
+  background: #1a0e2f;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #caa6ff;
+  box-shadow: 0 0 8px #caa6ff;
+}
+
+/* Menu de levels */
+#levelsMenu button {
+  width: 120px;
+}
+
+/* HUD de mensagens */
+#gameMessage {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(44,30,51,0.9);
+  padding: 15px 25px;
+  border-radius: 15px;
+  font-size: 18px;
+  color: #fff;
+  max-width: 80%;
+  display: none;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Pequena animação de fundo */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(202,166,255,0.2) 0%, transparent 70%);
+  animation: rotateBG 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotateBG {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

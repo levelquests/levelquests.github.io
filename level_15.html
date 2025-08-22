@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 15</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 15</h1>
+  <p>Quem é o criador do jogo? 🎮</p>
+
+  <div id="container" style="display:grid; grid-template-columns:repeat(5,1fr); gap:10px; max-width:900px; margin:50px auto;"></div>
+  <div id="gameMessage" style="text-align:center; margin-top:20px;"></div>
+
+  <script>
+    const container = document.getElementById("container");
+    const nicks = [
+      "CodeMaster","DevLord","PixelKing","BugHunter","ScriptWizard",
+      "Pedrux","HexCoder","lipdev","BitMage","NullPointer",
+      "StackLord","LoopBreaker","FunctionFan","KsDev","ByteBandit",
+      "CompileQueen","SyntaxSamurai","LogicLover","GitGuru","VariableViking",
+      "PatchPro","DebugDemon","TerminalTitan","ArrayAce","ObjectOverlord",
+      "ModuleMonk","ClassCommander","PointerPal","LambdaLegend","ScriptSultan",
+      "BitBishop","CodeNinja","HackHero","APIArtist","FrameworkFreak",
+      "KernelKnight","CompileCaptain","ThreadTitan","BinaryBaron","DataDruid",
+      "FunctionFighter","LogicLord","HexHacker","StackSorcerer","VariableViper",
+      "GitGiant","PatchPirate","DebugDragon","LambdaLord"
+    ];
+
+    let correctIndex = 13; // KsDev está na posição 14 (índice 13)
+
+    nicks.forEach((nick,i)=>{
+      const btn = document.createElement("button");
+      btn.textContent = nick;
+      btn.style.padding = "10px";
+      btn.style.cursor = "pointer";
+
+      btn.addEventListener("click", ()=>{
+        if(i === correctIndex){
+          document.getElementById("gameMessage").textContent = "✅ Você acertou! O criador é KsDev!";
+          setTimeout(()=> completeLevel(15),1000);
+        } else {
+          document.getElementById("gameMessage").textContent = `❌ Errado! (${nick})`;
+        }
+      });
+
+      container.appendChild(btn);
+    });
+  </script>
+</body>
+</html>

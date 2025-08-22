@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 14</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 14</h1>
+  <p>Clique no botão quando a contagem chegar em 0, mas rápido! ⏱️</p>
+
+  <p id="count" style="text-align:center; font-size:30px; margin-top:20px;">5</p>
+  <div style="text-align:center; margin-top:30px;">
+    <button id="btn" disabled style="padding:15px 25px; font-size:16px; cursor:pointer;">Clique!</button>
+  </div>
+  <div id="gameMessage" style="text-align:center; margin-top:20px;"></div>
+
+  <script>
+    let time = 5;
+    const count = document.getElementById("count");
+    const btn = document.getElementById("btn");
+
+    // Contador regressivo
+    const interval = setInterval(()=>{
+      count.textContent = time;
+      time--;
+      if(time < 0){
+        clearInterval(interval);
+        btn.disabled = false;
+        startBlinking();
+      }
+    },1000);
+
+    let blinkInterval;
+    function startBlinking(){
+      let visible = true;
+      blinkInterval = setInterval(()=>{
+        btn.style.visibility = visible ? "visible" : "hidden";
+        visible = !visible;
+      }, 200); // pisca rápido
+      // timeout máximo de 5s para clicar
+      setTimeout(()=>{
+        clearInterval(blinkInterval);
+        if(btn.disabled === false){ 
+          showMessage("💥 Você demorou! Voltando para o Level 1...");
+          setTimeout(()=> window.location.href="level_1.html",1000);
+        }
+      },5000);
+    }
+
+    btn.addEventListener("click", ()=>{
+      clearInterval(blinkInterval);
+      showMessage("✅ Você clicou na hora certa!");
+      setTimeout(()=> completeLevel(14),1000);
+    });
+
+    function showMessage(msg){ document.getElementById("gameMessage").textContent = msg; }
+  </script>
+</body>
+</html>

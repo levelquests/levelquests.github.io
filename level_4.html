@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 4</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 4</h1>
+  <p>Clique no botão... mas cuidado ⚠️</p>
+
+  <button onclick="failLevel()">botão?</button>
+  <button onclick="failLevel()">botao</button>
+  <button onclick="failLevel()">botão..</button>
+  <button onclick="failLevel()">botao...</button>
+  <button id="realBtn">botão...</button>
+  <button onclick="failLevel()">botão....</button>
+
+  <div id="gameMessage" style="margin-top:20px;"></div>
+
+  <script>
+    function failLevel() {
+      showMessage("💥 Errou! Voltando pro Level 1...", 1500);
+      setTimeout(() => window.location.href = "level_1.html", 1500);
+    }
+
+    document.getElementById("realBtn").addEventListener("click", () => {
+      if (confirm("Tem certeza?")) completeLevel(4);
+      else failLevel();
+    });
+  </script>
+</body>
+</html>

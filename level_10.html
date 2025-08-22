@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 10</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 10</h1>
+  <p>Clique no verde</p>
+
+  <button id="chameleon">Clique!</button>
+  <div id="gameMessage" style="margin-top:20px; text-align:center;"></div>
+
+  <script>
+    const btn = document.getElementById("chameleon");
+    let interval;
+    
+    // Função pra gerar cor aleatória ou verde
+    function changeColor() {
+      const rnd = Math.random();
+      if (rnd < 0.1) { // 10% de chance de ser verde
+        btn.style.background = "green";
+        btn.dataset.correct = "true";
+      } else {
+        btn.style.background = `hsl(${Math.random()*360},70%,50%)`;
+        btn.dataset.correct = "false";
+      }
+    }
+
+    // Mudar a cor a cada 0,5 segundos
+    interval = setInterval(changeColor, 500);
+
+    btn.addEventListener("click", ()=>{
+      if(btn.dataset.correct === "true"){
+        showMessage("✅ Você acertou!");
+        clearInterval(interval);
+        setTimeout(()=> completeLevel(10), 1000);
+      } else {
+        showMessage("❌ Errou! Voltando pro Level 1...");
+        clearInterval(interval);
+        setTimeout(()=> window.location.href="level_1.html", 1000);
+      }
+    });
+
+    function showMessage(msg){ 
+      document.getElementById("gameMessage").textContent = msg; 
+    }
+  </script>
+</body>
+</html>

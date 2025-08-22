@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 13</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 13</h1>
+  <p>Qual afirmação é verdadeira? 🤔</p>
+
+  <button onclick="fail()">O botão certo é o 4</button>
+  <button onclick="fail()">O botão certo é o 3</button>
+  <button onclick="next()">O botão certo é o 1</button>
+  <button onclick="fail()">O botão certo é o 2</button>
+
+  <div id="gameMessage"></div>
+
+  <script>
+    function fail(){ showMessage("❌ Errado!"); }
+    function next(){ showMessage("✅ Certo!"); setTimeout(()=> completeLevel(13),1000);}
+    function showMessage(msg){ document.getElementById("gameMessage").textContent = msg; }
+  </script>
+</body>
+</html>

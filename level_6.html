@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 6</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 6</h1>
+  <p>Encontre o botão certo antes que ele se multiplique loucamente! ⚡</p>
+
+  <div id="container"></div>
+  <div id="gameMessage"></div>
+
+  <script>
+    const container = document.getElementById("container");
+    let clicked = false;
+
+    function createButton() {
+      if (clicked) return;
+      const btn = document.createElement("button");
+      btn.textContent = "Clique aqui!";
+      btn.style.position = "absolute";
+      btn.style.left = Math.random() * (window.innerWidth-100) + "px";
+      btn.style.top = Math.random() * (window.innerHeight-50) + "px";
+      btn.onclick = () => {
+        clicked = true;
+        showMessage("✅ Você achou o botão certo!");
+        setTimeout(()=> completeLevel(6), 1000);
+      };
+      container.appendChild(btn);
+    }
+
+    setInterval(createButton, 200); // muito mais rápido
+
+    function showMessage(msg){
+      document.getElementById("gameMessage").textContent = msg;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 7</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+  <style>
+    #container div {
+      transition: all 0.3s ease;
+    }
+    #container div:hover {
+      transform: scale(1.2) rotate(5deg);
+      background: linear-gradient(135deg, #6a0dad, #1e90ff);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <h1>Level 7</h1>
+  <p>Encontre o número correto escondido entre os quadrados 🟦</p>
+
+  <div id="container" style="display:grid; grid-template-columns:repeat(5,1fr); gap:15px; max-width:800px; margin:50px auto;"></div>
+  <div id="gameMessage" style="text-align:center; margin-top:20px;"></div>
+
+  <script>
+    const container = document.getElementById("container");
+    const correctNumber = Math.floor(Math.random()*25)+1; // 1 a 25
+
+    for(let i=1;i<=25;i++){
+      const div = document.createElement("div");
+      div.textContent = i;
+      div.style.width = "80px";
+      div.style.height = "80px";
+      div.style.display = "flex";
+      div.style.alignItems = "center";
+      div.style.justifyContent = "center";
+      div.style.background = "#444";
+      div.style.color = "#fff";
+      div.style.fontSize = "20px";
+      div.style.cursor = "pointer";
+      div.style.borderRadius = "10px";
+
+      div.addEventListener("click", ()=>{
+        if(i===correctNumber){
+          showMessage("✅ Você encontrou o número correto!");
+          setTimeout(()=> completeLevel(7),1000);
+        } else {
+          showMessage("❌ Errado! Voltando pro Level 1...");
+          setTimeout(()=> window.location.href = "level_1.html", 1500);
+        }
+      });
+
+      container.appendChild(div);
+    }
+
+    function showMessage(msg){
+      const msgBox = document.getElementById("gameMessage");
+      msgBox.textContent = msg;
+    }
+  </script>
+</body>
+</html>

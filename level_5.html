@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 5</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 5</h1>
+  <p>Digite a senha secreta pra passar 🔒</p>
+
+  <input type="text" id="senha" placeholder="Senha...">
+  <button onclick="checkSenha()">OK</button>
+
+  <script>
+    function checkSenha() {
+      const s = document.getElementById("senha").value.trim();
+      if (s.toLowerCase() === "a senha secreta") {
+        showMessage("✅ Acertou! A senha secreta era literalmente 'a senha secreta' 😂");
+        setTimeout(()=> completeLevel(5), 1000);
+      } else {
+        showMessage("❌ Senha errada 🤡");
+      }
+    }
+
+    function showMessage(msg) {
+      document.getElementById("gameMessage").textContent = msg;
+    }
+  </script>
+
+  <div id="gameMessage"></div>
+</body>
+</html>

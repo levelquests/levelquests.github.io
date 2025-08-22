@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 3</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="levels.js"></script>
+</head>
+<body>
+  <h1>Level 3</h1>
+  <p>Qual é o botão verdadeiro?</p>
+  
+  <div style="display:flex; gap:20px; justify-content:center; margin-top:40px;">
+    <button onclick="fail()">Clique aqui</button>
+    <button onclick="fail()">Não, é aqui</button>
+    <button onclick="next()">Verdadeiro</button>
+    <button onclick="fail()">Talvez aqui</button>
+  </div>
+
+  <div id="message" style="margin-top:20px;"></div>
+
+  <script>
+    function fail() {
+      document.getElementById("message").textContent = "❌ Errou! Voltando pro Level 1...";
+      setTimeout(() => window.location.href = "level_1.html", 1500);
+    }
+
+    function next() {
+      document.getElementById("message").textContent = "✅ Acertou!";
+      setTimeout(() => completeLevel(3), 1000);
+    }
+  </script>
+</body>
+</html>
