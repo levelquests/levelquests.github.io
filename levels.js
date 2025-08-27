@@ -52,7 +52,7 @@ function showMessage(text, duration = 2000) {
     <div style="background:#222; padding:30px; border-radius:15px; text-align:center; max-width:400px; width:80%;">
       <h2 id="creditsTitle">Créditos do Jogo</h2>
       <p id="creditsCreator">Criador: KsDev</p>
-      <p id="creditsContact">Contato: ksdev@tutamail.com</p>
+      <p id="creditsContact">Contato: contatoksdev@tutamail.com</p>
       <button id="closeCreditsBtn" style="margin-top:20px; padding:10px 20px; border:none; border-radius:8px; background:#2c1e33; color:#fff; cursor:pointer;">Fechar</button>
     </div>
   `;
@@ -70,4 +70,5 @@ function showMessage(text, duration = 2000) {
     }
     modal.style.display = "flex";
   }
+
 })();
